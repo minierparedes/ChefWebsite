@@ -12,19 +12,19 @@ function Cards() {
                     <ul className="cards__items">
                         <CardItem 
                         src="./img/cards_item_sandwich_01.jpg" 
-                        text="Mississippi Queen inspired by Regular Show" 
+                        text="eggs benedict, breakfast classic is the ideal way to begin an indulgent weekend" 
                         label="French" 
                         path="/services" 
                         />
                         <CardItem 
                         src="./img/cards_item_american_01.jpg" 
-                        text="Mississippi Queen inspired by Regular Show" 
-                        label="Italian" 
+                        text="Simple Stake and salad" 
+                        label="American" 
                         path="/services" 
                         />
                         <CardItem 
                         src="./img/cards_item_italian_02.jpg" 
-                        text="Mississippi Queen inspired by Regular Show" 
+                        text="The best gravy you will ever try!" 
                         label="Italian" 
                         path="/services" 
                         />

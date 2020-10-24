@@ -6,8 +6,8 @@ import "./HeroSection.css";
 const HeroSection = () => {
     return (
         <div className="hero-container">
-            <h1>Binge. Watch.</h1>
-            <p>Let's start cooking it up!</p>
+            <h1>Cook and enjoy</h1>
+            <p>simple recipes to follow</p>
         </div>
     )
 }
