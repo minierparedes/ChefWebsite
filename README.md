@@ -4,6 +4,8 @@ A website dedicated to best recipes and exclusive content to registered users
 
 <img width="1212" alt="Screen Shot 2020-10-25 at 0 03 21" src="https://user-images.githubusercontent.com/65219445/97085019-b3d45380-1655-11eb-9955-b50a19fa1497.png">
 
+<img width="1135" alt="Screen Shot 2020-10-25 at 0 03 40" src="https://user-images.githubusercontent.com/65219445/97085050-e1210180-1655-11eb-9d16-7d9cca26c1b4.png">
+
 ## Available Scripts
 
 In the project directory, you can run:
