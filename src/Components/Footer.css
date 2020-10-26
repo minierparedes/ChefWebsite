@@ -73,14 +73,14 @@
 }
 
 .footer-links-items a {
-  color: white;
+  color: rgb(99, 98, 98);
   text-decoration: none;
   margin-bottom: 8px;
 }
 
 .footer-links-items a:hover {
-  color: red;
-  transition: 1s ease-out;
+  color: rgb(50, 48, 48);
+  transition: 0.3s ease-out;
 }
 
 .footer-email-form h2 {
@@ -121,22 +121,22 @@
 
 .social-icons-link-facebook:hover {
   color: #4267B2;
-  transition: 0.5s ease-out;
+  transition: 0.3s ease-out;
   transform: scale(2);
 }
 .social-icons-link-instagram:hover {
   color: #E1306C;
-  transition: 0.5s ease-out;
+  transition: 0.3s ease-out;
   transform: scale(2);
 }
 .social-icons-link-twitter:hover {
   color: #1DA1F2;
-  transition: 0.5s ease-out;
+  transition: 0.3s ease-out;
   transform: scale(2);
 }
 .social-icons-link-line:hover {
   color: rgb(27, 196, 27);
-  transition: 0.5s ease-out;
+  transition: 0.3s ease-out;
   transform: scale(2);
 }
 
