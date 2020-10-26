@@ -79,8 +79,8 @@
 }
 
 .footer-links-items a:hover {
-  color: #e9e9e9;
-  transition: 0.3s ease-out;
+  color: red;
+  transition: 1s ease-out;
 }
 
 .footer-email-form h2 {
@@ -112,6 +112,28 @@
   justify-content: space-between;
   align-items: center;
   width: 240px;
+}
+
+.social-logo:hover {
+  color: blueviolet;
+  transition: 0.5s ease-out;
+}
+
+.social-icons-link-facebook:hover {
+  transition: 0.5s ease-out;
+  transform: scale(2);
+}
+.social-icons-link-instagram:hover {
+  transition: 0.5s ease-out;
+  transform: scale(2);
+}
+.social-icons-link-twitter:hover {
+  transition: 0.5s ease-out;
+  transform: scale(2);
+}
+.social-icons-link-line:hover {
+  transition: 0.5s ease-out;
+  transform: scale(2);
 }
 
 .social-logo {

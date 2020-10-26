@@ -54,16 +54,16 @@ function Footer() {
                     </div>
                     <small className="website-rights">&copy;{new Date().getFullYear()} CHEF AWESOME | All rights reserved</small>
                     <div className="social-icons">
-                        <Link className="social-icons-link facebook" to="/" target="_blank" aria-label="Facebook">
+                        <Link className="social-icons-link-facebook" to="/" target="_blank" aria-label="Facebook">
                             <i className="fab fa-facebook-f" />
                         </Link>
-                        <Link className="social-icons-link instagram" to="/" target="_blank" aria-label="Instagram">
+                        <Link className="social-icons-link-instagram" to="/" target="_blank" aria-label="Instagram">
                             <i className="fab fa-instagram" />
                         </Link>
-                        <Link className="social-icons-link twitter" to="/" target="_blank" aria-label="Twitter">
+                        <Link className="social-icons-link-twitter" to="/" target="_blank" aria-label="Twitter">
                             <i className="fab fa-twitter" />
                         </Link>
-                        <Link className="social-icons-link line" to="/" target="_blank" aria-label="Line">
+                        <Link className="social-icons-link-line" to="/" target="_blank" aria-label="Line">
                             <i className="fab fa-line" />
                         </Link>
                     </div>
