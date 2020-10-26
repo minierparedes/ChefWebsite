@@ -177,4 +177,8 @@
   .social-media-wrapper {
     flex-direction: column;
   }
+
+  .social-icons {
+    padding: 25px;
+  }
 }
