@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
+import useForm from "./useForm";
 import "./Footer.css";
 
 function Footer() {
+    const {handleChange, values} = useForm();
     return (
         <div className="footer-container">
             <section className="footer-subscription">
@@ -11,7 +13,7 @@ function Footer() {
                 <p className="footer-subscription-text">Sign up and join the community to receive news and updates</p>
                 <div className="input-area">
                     <form>
-                        <input type="email" name="email" placeholder="email@chef.com" className="footer-input" />
+                        <input type="email" name="email" className="footer-input" placeholder="email@chef.com" value={values.email} onChange={handleChange} />
                         <Button buttonStyle="btn--outline">Subscribe</Button>
                     </form>
                 </div>
@@ -35,9 +37,9 @@ function Footer() {
                         <Link to="/services">????</Link>
                         <Link to="/services">????</Link>
                         <Link to="/services">????</Link>
-                </div>
-                <div className="footer-links-wrapper">
-                    
+                    </div>
+                    <div className="footer-links-wrapper">
+
                     </div>
                 </div>
             </div>
@@ -46,7 +48,7 @@ function Footer() {
                     <div className="footer-logo">
                         <Link className="social-logo" to="/">@<i /></Link>
                     </div>
-                    <small className="website-rights">&copy;{new Date().getFullYear()} Damian Goodwin</small>
+                    <small className="website-rights">&copy;  - {new Date().getFullYear()} Damian Goodwin</small>
                     <div className="social-icons">
                         <Link className="social-icons-link-facebook" to="/" target="_blank" aria-label="Facebook">
                             <i className="fab fa-facebook-f" />
