@@ -1,5 +1,9 @@
-# Chef's best recipes website
-A website dedicated to the best recipes and exclusive content to registered users
+# Name
+Chef Awesome
+
+# Description
+A website dedicated to the best recipes and exclusive content to registered users.<br />
+The website is dedicated to provide recipes and schedule private and public events for anyone who signs up.
 
 
 <img width="1212" alt="Screen Shot 2020-10-25 at 0 03 21" src="https://user-images.githubusercontent.com/65219445/97085019-b3d45380-1655-11eb-9955-b50a19fa1497.png">
@@ -21,7 +25,7 @@ You will also see any lint errors in the console.
 ### `yarn test`
 
 Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
 
 ### `yarn build`
 
@@ -31,5 +35,9 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
+# Roadmap
+This is a full stack website having the following tech stack: <br />
+`React.js` for frontend and form validation <br />
+`Node.js` and `Express.js` server side <br />
+`PostgreSQL` database <br />
+The project is still going on and is being updated daily.
