@@ -3,7 +3,7 @@ Chef Awesome
 
 # Description
 A website dedicated to the best recipes and exclusive content to registered users.<br />
-The website is dedicated to provide recipes and schedule private and public events for anyone who signs up.
+Users can schedule private events on the site calendar, be a part of the mailing list and many more features.
 
 
 <img width="1212" alt="Screen Shot 2020-10-25 at 0 03 21" src="https://user-images.githubusercontent.com/65219445/97085019-b3d45380-1655-11eb-9955-b50a19fa1497.png">
@@ -40,4 +40,4 @@ This is a full stack website having the following tech stack: <br />
 `React.js` for frontend and form validation <br />
 `Node.js` and `Express.js` server side <br />
 `PostgreSQL` database <br />
-The project is still going on and is being updated daily.
+The project is still going on and is being updated constantly.
