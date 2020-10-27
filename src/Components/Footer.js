@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { Button } from './Button';
 import useForm from "./useForm";
 import "./Footer.css";
+import "./Form.css";
 
 function Footer() {
-    const {handleChange, values} = useForm();
+    const {handleChange, values, errors} = useForm();
     return (
         <div className="footer-container">
             <section className="footer-subscription">
@@ -14,6 +15,7 @@ function Footer() {
                 <div className="input-area">
                     <form>
                         <input type="email" name="email" className="footer-input" placeholder="email@chef.com" value={values.email} onChange={handleChange} />
+                        {errors.email && <p>{errors.email}</p>}
                         <Button buttonStyle="btn--outline">Subscribe</Button>
                     </form>
                 </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const useForm = () => {
+const useForm = (validate) => {
     const [values, setValues] = useState({
         name: "",
         lastname: "",
@@ -15,7 +15,13 @@ const useForm = () => {
             [name]: value
         });
     };
-    return { handleChange, values };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+        setErrors(validate(values))
+    }
+    return { handleChange, handleSubmit, values, errors };
 };
 
 export default useForm;
