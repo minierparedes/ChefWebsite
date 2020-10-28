@@ -1,18 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import "../../App.css";
 import RecipesAPI from "../../API/RecipesAPI";
+import { RecipesContext } from '../../Context/RecipesContext';
 
 
-export default function Recipes() {
+export default function Recipes(props) {
 
-    useEffect(async () => {
-        try {
-           const response = await RecipesAPI.get("/");
-           console.log(response);
-        } catch (error) {
-            console.log(error);
-        }
-    }, [])
+    const { recipes, setRecipes } = useContext(RecipesContext)
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await RecipesAPI.get("/");
+                setRecipes(response.data.data.recipes);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+
+    }, []);
 
     return (
         <div>
