@@ -16,7 +16,7 @@ function Form() {
             <div className="form-container">
                 <span className="close-btn">x</span>
                 <div className="form-content-left">
-                <img src="./img/cutlery-kitchen-set.svg" alt="logo" className="form-img"/>
+                <img src="./img/kitchen-utensils.svg" alt="logo" className="form-img"/>
                 </div>
                 {!isSubmitting ? <FormSignUp submitForm={submitForm} /> : <FormSuccess />}
        </div>

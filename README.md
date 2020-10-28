@@ -36,7 +36,7 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 # Roadmap
-This is a full stack website having the following tech stack: <br />
+This is a full stack website using the following tech stack: <br />
 `React.js` for frontend and form validation <br />
 `Node.js` and `Express.js` server side <br />
 `PostgreSQL` database <br />
