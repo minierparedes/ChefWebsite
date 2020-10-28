@@ -1,33 +1,45 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
+import RecipesAPI from "../API/RecipesAPI";
+import { RecipesContext } from '../Context/RecipesContext';
 import CardItem from './CardItem';
 import "./Cards.css";
 
 
-function Cards() {
+function Cards(props) {
+
+    const { recipes, setRecipes } = useContext(RecipesContext);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await RecipesAPI.get("/");
+                setRecipes(response.data.data.recipes);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+
+    }, []);
+
     return (
         <div className="cards">
             <h1>Recipes</h1>
             <div className="cards__container">
                 <div className="cards__wrapper">
                     <ul className="cards__items">
-                        <CardItem 
-                        src="./img/cards_item_sandwich_01.jpg" 
-                        text="eggs benedict, breakfast classic is the ideal way to begin an indulgent weekend" 
-                        label="French" 
-                        path="/services" 
+                        {recipes && recipes.map(recipe => {
+                            return (
+                                <CardItem
+                            src="./img/cards_item_sandwich_01.jpg"
+                            text={recipe.title}
+                            label="French"
+                            path="/Recipes"
                         />
-                        <CardItem 
-                        src="./img/cards_item_american_01.jpg" 
-                        text="Simple Stake and salad" 
-                        label="American" 
-                        path="/services" 
-                        />
-                        <CardItem 
-                        src="./img/cards_item_italian_02.jpg" 
-                        text="The best gravy you will ever try!" 
-                        label="Italian" 
-                        path="/services" 
-                        />
+                            )
+                        })}
+                        
+
                     </ul>
                 </div>
             </div>

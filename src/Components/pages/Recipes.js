@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import "../../App.css";
 import RecipesAPI from "../../API/RecipesAPI";
 import { RecipesContext } from '../../Context/RecipesContext';
+import Cards from '../Cards';
 
 
 export default function Recipes(props) {
@@ -23,7 +24,7 @@ export default function Recipes(props) {
 
     return (
         <div>
-            <h1>Hello world</h1>
+            <Cards />
         </div>
     )
 }
