@@ -8,21 +8,26 @@ import Services from './Components/pages/Services';
 import SignUp from './Components/pages/SignUp';
 import Footer from './Components/Footer';
 import Recipes from './Components/pages/Recipes';
+import RecipeDetails from './Components/pages/RecipeDetails';
+import { RecipesContextProvider } from './Context/RecipesContext';
 
 function App() {
   return (
-    <>
+    <RecipesContextProvider>
+      <>
     <Router>
     <Navbar />
     <Switch>
     <Route path="/" exact component={Home}/>
     <Route path="/recipes" component={Recipes}/>
+    <Route exact path="/recipes/:id" component={RecipeDetails}/>
     <Route path="/services" component={Services}/>
     <Route path="/products" component={Products}/>
     <Route path="/sign-up" component={SignUp}/>
     </Switch>
     </Router>
     </>
+    </RecipesContextProvider>
   );
 }
 

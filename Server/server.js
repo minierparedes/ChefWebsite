@@ -47,8 +47,7 @@ app.get("/api/v1/recipes/:id", async (req, res) => {
 app.post("/api/v1/recipes", async (req, res) => {
 
     try {
-        const results = await db.query("INSERT INTO recipes (title, ingredients, directions, video_url) values ($1, $2, $3, $4) returning *", [req.body.title, req.body.ingredients, req.body.directions, req.body.video_url])
-        console.log(results);
+        const results = await db.query("INSERT INTO recipes (title, ingredients, directions, video_url) values ($1, $2, $3, $4) returning *", [req.body.title, req.body.ingredients, req.body.directions, req.body.video_url]);
         res.status(201).json({
             status: "success",
             data: {
