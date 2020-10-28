@@ -11,15 +11,18 @@ app.use(express.json());
 
 //GET all recipes
 app.get("/api/v1/recipes", async (req, res) => {
-    const results = await db.query("select * from recipes");
-    console.log(results);
-
-    res.status(200).json({
+    try {
+        const results = await db.query("select * from recipes");
+        res.status(200).json({
         status: "success",
+        results: results.rowCount,
         data: {
-            recipes: ["Raspberry Danish inspired by Ant Man & The Wasp", "Enchiladas inspired by Schitt's Creek"]
+            recipes: results.rows
         }
-    });
+    }); 
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 //GET recipe
