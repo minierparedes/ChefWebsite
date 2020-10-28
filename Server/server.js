@@ -17,7 +17,7 @@ app.get("/api/v1/recipes", (req, res) => {
     });
 });
 
-//GET a recipe
+//GET recipe
 app.get("/api/v1/recipes/:id", (req, res) => {
     console.log(req.params);
     res.status(200).json({
@@ -28,7 +28,7 @@ app.get("/api/v1/recipes/:id", (req, res) => {
     });
 });
 
-//CREATE a recipe
+//CREATE recipe
 app.post("/api/v1/recipes", (req, res) => {
     console.log(req.body);
 
@@ -40,6 +40,7 @@ app.post("/api/v1/recipes", (req, res) => {
     });
 });
 
+//UPDATE recipe
 app.put("/api/v1/recipes/:id", (req, res) => {
     console.log(req.params.id);
     console.log(req.body);
@@ -52,6 +53,12 @@ app.put("/api/v1/recipes/:id", (req, res) => {
     });
 });
 
+//DELETE recipe
+app.delete("/api/v1/recipes/:id", (req, res) => {
+    res.status(204).json({
+        status: "success"
+    });
+});
 
 const PORT = process.env.PORT || 3555;
 app.listen(PORT, () => {
