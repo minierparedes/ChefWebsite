@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import RecipesAPI from "../API/RecipesAPI";
 import { RecipesContext } from '../Context/RecipesContext';
 import CardItem from './CardItem';
@@ -8,6 +9,8 @@ import "./Cards.css";
 function Cards(props) {
 
     const { recipes, setRecipes } = useContext(RecipesContext);
+
+    let history = useHistory();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -22,6 +25,10 @@ function Cards(props) {
 
     }, []);
 
+    const handleRecipesSelect = (id) => {
+        history.push(`/recipes/${id}`);
+    }
+
     return (
         <div className="cards">
             <h1>Recipes</h1>
@@ -31,14 +38,17 @@ function Cards(props) {
                         {recipes && recipes.map(recipe => {
                             return (
                                 <CardItem
-                            src="./img/cards_item_sandwich_01.jpg"
-                            text={recipe.title}
-                            label="French"
-                            path="/Recipes"
-                        />
+
+                                    key={recipe.recipe_id}
+                                    src="./img/cards_item_sandwich_01.jpg"
+                                    text={recipe.title}
+                                    label="French"
+                                    path={`/recipes/${recipe.recipe_id}`}
+                                    onClick={() => handleRecipesSelect(recipe.recipe_id)}
+                                />
                             )
                         })}
-                        
+
 
                     </ul>
                 </div>

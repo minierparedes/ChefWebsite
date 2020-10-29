@@ -1,6 +1,12 @@
 import React from 'react';
 import "../../App.css";
+import Footer from '../Footer';
 
 export default function RecipeDetails() {
-    return <h1 className="recipe-detials">Recipes Details</h1>
+    return (
+        <div>
+            <h1 className="recipe-detials">HELLO WORLD</h1>
+           
+        </div>
+    )
 }

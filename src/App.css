@@ -6,6 +6,7 @@
   }
   
   .home,
+  .recipe-detials,
   .services,
   .products,
   .sign-up {
@@ -16,6 +17,15 @@
     font-size: 3rem;
   }
   
+  .recipe-detials {
+    background-image: url('/images/img-1.jpg');
+    background-position: center;
+    background-size: fill;
+    background-repeat: no-repeat;
+    color: black;
+    font-size: 100px;
+  }
+
   .services {
     /* background-image: url('/images/img-2.jpg'); */
     background-position: center;

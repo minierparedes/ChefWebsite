@@ -24,7 +24,7 @@ export default function Recipes(props) {
 
     return (
         <div>
-            <Cards />
+           <h1>Hello world Recipes</h1>
         </div>
     )
 }
