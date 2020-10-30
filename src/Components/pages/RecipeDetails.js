@@ -11,13 +11,19 @@ export default function RecipeDetails() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await RecipesAPI.
+            try {
+                const response = await RecipesAPI.get(`/${id}`);
+                setSelectedRecipe(response.data.data.recipe);
+            } catch (error) {
+                console.log(error);
+            }
         };
+        fetchData();
     }, []);
 
     return (
         <div>
-            <h1 className="recipe-detials">HELLO WORLD</h1>
+            <h1 className="recipe-detials">{selectedRecipe && selectedRecipe.title}</h1>
 
         </div>
     )
