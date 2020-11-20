@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import "../Components/RecipeCard.css";
 
 function RecipeCard(props) {
+    console.log(props.src);
     return (
         <div className="card-container">
             <div className="img-container">
-                <img src="./img/cards_item_sandwich_01.jpg" alt="recipe picture"></img>
+                <img className="card-img" src={props.src} alt="recipe image"></img>
             </div>
             <div className="card-content">
-            <div className="card-title"><h3>{props.recipe.title}</h3></div>
+            <div className="card-title"><h3>{props.title}</h3></div>
             <div className="card-body"><p>{props.body} </p></div>
             </div>
         </div>

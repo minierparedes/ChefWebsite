@@ -3,41 +3,92 @@ const express = require("express");
 const cors = require("cors");
 const db = require("../Server/db")
 const morgan = require("morgan");
+const multer = require("multer");
+const fileUpload = require("express-fileupload");
+const bodyParser = require("body-parser");
+const FileType = require('file-type');
+
 
 
 const app = express();
 
-
-app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
 app.use(cors());
+app.use(fileUpload());
 
 //GET all recipes
 app.get("/api/v1/recipes", async (req, res) => {
     try {
+        
         const results = await db.query("SELECT * FROM recipes");
+        
+
+        
         res.status(200).json({
-            status: "success",
-            results: results.rowCount,
-            data: {
-                recipes: results.rows
-            }
-        });
+                    status: "success",
+                    results: results.rowCount,
+                    data: {
+                        recipes: results.rows
+                    }
+                });
+               
     } catch (error) {
         console.log(error);
     }
 });
 
+//GET all images
+
+// app.get("/api/v1/recipes", async (req, res) => {
+
+//     try {
+//         const results = await db.query("SELECT * FROM images");
+//         if(results) {
+//             const contentType = await FileType.fromBuffer(results.rows.img);
+//             res.type(contentType.mime);
+//             res.end(results.rows[0].img);
+//             res.status(200).json({
+//                 status: "success",
+//                 data: results
+//             });
+//         }else res.end("no image available");
+//         } catch (error) {
+//             console.log(error);
+//         }
+// });
+
 //GET recipe
+// app.get("/api/v1/recipes/:id", async (req, res) => {
+
+//     try {
+//         const results = await db.query("SELECT * FROM recipes WHERE recipe_id= $1", [req.params.id]);
+//         res.status(200).json({
+//             status: "success",
+//             data: {
+//                 recipe: results.rows[0]
+//             }
+//         });
+//     } catch (error) {
+//         console.log(error);
+//     }
+
+
+// });
+
+//GET recipe image
+
 app.get("/api/v1/recipes/:id", async (req, res) => {
 
     try {
-        const results = await db.query("SELECT * FROM recipes WHERE recipe_id= $1", [req.params.id]);
-        res.status(200).json({
-            status: "success",
-            data: {
-                recipe: results.rows[0]
-            }
-        });
+        const img = await db.query("SELECT * FROM images WHERE img_id= $1", [req.params.id]);
+        if (img) {
+            const contentType = await FileType.fromBuffer(img.rows[0].img); // get the mimetype of the buffer (in this case its gonna be jpg but can be png or w/e)
+            res.type(contentType.mime); // not always needed most modern browsers including chrome will understand it is an img without this
+            res.end(img.rows[0].img);
+        } else {
+            res.end('No Img with that Id!');
+        }
     } catch (error) {
         console.log(error);
     }
@@ -45,11 +96,12 @@ app.get("/api/v1/recipes/:id", async (req, res) => {
 
 });
 
+
 //CREATE recipe
 app.post("/api/v1/recipes", async (req, res) => {
-
+    const { name, data } = req.files.file;
     try {
-        const results = await db.query("INSERT INTO recipes (title, ingredients, directions, video_url) values ($1, $2, $3, $4) returning *", [req.body.title, req.body.ingredients, req.body.directions, req.body.video_url]);
+        const results = await db.query("INSERT INTO recipes (title, ingredients, directions, video_url, img_name, img) VALUES ($1, $2, $3, $4, $5, $6) returning *", [req.body.title, req.body.ingredients, req.body.directions, req.body.video_url, name, data]);
         res.status(201).json({
             status: "success",
             data: {
@@ -63,33 +115,52 @@ app.post("/api/v1/recipes", async (req, res) => {
 
 });
 
-//UPDATE recipe
-app.put("/api/v1/recipes/:id", async (req, res) => {
+// app.post("/api/v1/recipes", async (req, res) => {
+//     const { name, data } = req.files.file;
+//     try {
+//         const results = await db.query("INSERT INTO recipes (img_name, img) VALUES ($1, $2) returning *", [name, data]);
+//         res.status(200).json({
+//             status: "success",
+//             data: {
+//                 image: results
+//             }
+//         });
+//     } catch (error) {
+//         console.log(error);
+//     }
 
-    try {
-        const results = await db.query("UPDATE recipes SET title = $1, ingredients = $2, directions = $3, video_url =$4 WHERE recipe_id = $5 returning *", [req.body.title, req.body.ingredients, req.body.directions, req.body.video_url, req.params.id]);
-        res.status(200).json({
-            status: "success",
-            data: {
-                recipe: results.rows[0]
-            }
-        });
-    } catch (error) {
-        console.log(error);
-    }
-});
+
+// });
+
+//UPDATE recipe
+// app.put("/api/v1/recipes/:id", async (req, res) => {
+
+//     try {
+//         const results = await db.query("UPDATE recipes SET title = $1, ingredients = $2, directions = $3, video_url =$4 WHERE recipe_id = $5 returning *", [req.body.title, req.body.ingredients, req.body.directions, req.body.video_url, req.params.id]);
+//         res.status(200).json({
+//             status: "success",
+//             data: {
+//                 recipe: results.rows[0]
+//             }
+//         });
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
 
 //DELETE recipe
-app.delete("/api/v1/recipes/:id", async (req, res) => {
-    try {
-        const results = await db.query("DELETE FROM recipes WHERE recipe_id = $1", [req.params.id]);
-        res.status(204).json({
-            status: "success"
-        });
-    } catch (error) {
-        console.log(error);
-    }
-});
+// app.delete("/api/v1/recipes/:id", async (req, res) => {
+//     try {
+//         const results = await db.query("DELETE FROM recipes WHERE recipe_id = $1", [req.params.id]);
+//         res.status(204).json({
+//             status: "success"
+//         });
+//     } catch (error) {
+//         console.log(error);
+//     }
+// });
+
+
 
 const PORT = process.env.PORT || 3555;
 app.listen(PORT, () => {
