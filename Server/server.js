@@ -59,22 +59,22 @@ app.get("/api/v1/recipes", async (req, res) => {
 // });
 
 //GET recipe
-// app.get("/api/v1/recipes/:id", async (req, res) => {
+app.get("/api/v1/recipes/:id", async (req, res) => {
 
-//     try {
-//         const results = await db.query("SELECT * FROM recipes WHERE recipe_id= $1", [req.params.id]);
-//         res.status(200).json({
-//             status: "success",
-//             data: {
-//                 recipe: results.rows[0]
-//             }
-//         });
-//     } catch (error) {
-//         console.log(error);
-//     }
+    try {
+        const results = await db.query("SELECT * FROM recipes WHERE recipe_id= $1", [req.params.id]);
+        res.status(200).json({
+            status: "success",
+            data: {
+                recipe: results.rows[0]
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
 
 
-// });
+});
 
 //GET recipe image
 
