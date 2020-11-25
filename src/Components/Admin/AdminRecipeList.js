@@ -9,7 +9,7 @@ function AdminRecipeList(props) {
         const fetchData = async () => {
             try {
                 const response = await RecipesAPI.get("/");
-                setRecipes(response.data.data.recipes)
+                setRecipes(response.data.data.recipes);
             } catch (error) {
                 console.log(error);
             }
@@ -36,15 +36,13 @@ function AdminRecipeList(props) {
                         <tr key={recipe.recipe_id}>
                             <th scope="row">{recipe.recipe_id}</th>
                             <td>{recipe.title}</td>
-                            <td>{recipe.recipe_date.slice(0, 10)}</td>
+                            <td>{recipe.recipe_date}</td>
                             <td><button className="btn btn-warning">Update</button></td>
                             <td><button className="btn btn-danger">Delete</button></td>
                         </tr>)
                     })}
                 </tbody>
             </table>
-
-
         </div>
     )
 };

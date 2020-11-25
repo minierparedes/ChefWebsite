@@ -7,7 +7,6 @@ import RecipeCard from "../Components/RecipeCard";
 
 function RecipeCardList() {
     const { recipes, setRecipes } = useContext(RecipesContext);
-    const { images, setImages } = useContext(RecipesContext);
 
     let history = useHistory();
 
@@ -15,10 +14,10 @@ function RecipeCardList() {
         const fetchData = async () => {
             try {
                 const response = await RecipesAPI.get("/");
-                // for(let i = 0; i < response.data.data.recipes.length; i++) {
-                // }
+                for (let i = 0; i < response.data.data.recipes.length; i++) {
+                }
                 setRecipes(response.data.data.recipes);
-                //setRecipes(response.data.data.recipes.splice(0, 6));
+                setRecipes(response.data.data.recipes);
             } catch (error) {
                 console.log(error);
             }
@@ -44,13 +43,13 @@ function RecipeCardList() {
         <div className="recipe-card-list-container">
             {recipes.map(recipe => (
                 <div onClick={() => handleRecipesSelect(recipe.recipe_id)}>
-                <RecipeCard key={recipe.recipe_id} recipe={recipe}
-                title={recipe.title}
-                src={recipe.img && convertBufferToBase64(recipe.img.data)}
-                date={recipe.recipe_date.slice(0, 10)}
-                body={recipe.directions}
-            /> 
-            </div>
+                    <RecipeCard key={recipe.recipe_id} recipe={recipe}
+                        title={recipe.title}
+                        src={recipe.img && convertBufferToBase64(recipe.img.data)}
+                        date={recipe.recipe_date.slice(0, 10)}
+                        body={recipe.directions}
+                    />
+                </div>
             ))}
         </div>
     )

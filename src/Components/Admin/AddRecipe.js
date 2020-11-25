@@ -1,39 +1,75 @@
-import React from 'react';
+import React, { useState } from 'react';
+import RecipesAPI from '../../API/RecipesAPI';
+
 
 function AddRecipe() {
+    const [title, setTitle] = useState("");
+    const [comment, setComment] = useState("");
+    const [ingredients, setIngredients] = useState("");
+    const [directions, setDirections] = useState("");
+    const [file, setFile] = useState("");
+    const [filename, setFilename] = useState("choose a file");
+
+    const onChange = e => {
+        setFilename(e.target.files[0].name);
+        setFile(e.target.files[0]);
+
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("name", filename);
+            formData.append("title", title);
+            formData.append("ingredients", ingredients);
+            formData.append("directions", directions);
+            console.log(formData);
+
+            const response = await RecipesAPI.post("/", formData, {
+                headers: {'content-type': 'multipart/form-data',},
+                
+            });
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
-        <div className=" mb-4">
-            <form>
+        <div className="container">
+            <form enctype="multipart/form-data">
                 <div className="form-group" >
                     <div className="row">
                         <div className="col">
                             <div className="form-group">
                                 <label for="title" >Recipe title</label>
-                                <input type="text" className="form-control" name="title" placeholder="title"></input>
+                                <input value={title} onChange={e => setTitle(e.target.value)} type="text" className="form-control" name="title" placeholder="title"></input>
                             </div>
                         </div>
                         <div className="col">
                             <div className="form-group">
                                 <label for="comment" >Recipe comment</label>
-                                <input type="text" className="form-control" name="comment" placeholder="comment"></input>
+                                <input value={comment} onChange={e => setComment(e.target.value)} type="text" className="form-control" name="comment" placeholder="comment"></input>
                             </div>
                         </div>
                     </div>
                     <div className="form-group">
                         <label for="ingredients" >Recipe ingredients</label>
-                        <input type="text" className="form-control" name="ingredients" placeholder="ingredients"></input>
+                        <input value={ingredients} onChange={e => setIngredients(e.target.value)} type="text" className="form-control" name="ingredients" placeholder="ingredients"></input>
                     </div>
                     <div className="form-group">
                         <label for="directions" >Recipe directions</label>
-                        <input type="text" className="form-control" style={{ height: "200px" }} name="directions"></input>
+                        <textarea value={directions} onChange={e => setDirections(e.target.value)} type="text" className="form-control" rows="8" name="directions"></textarea>
                     </div>
                     <div className="form-group">
                         <div class="custom-file">
-                            <label class="custom-file-label" for="image" style={{ width: "400px" }}>Choose file</label>
-                            <input type="file" class="custom-file-input" name="image"></input>
+                            <label class="custom-file-label" htmlFor="customFile" style={{ width: "400px" }}>{filename}</label>
+                            <input onChange={onChange} type="file" class="custom-file-input" name="customFile" id="customFile" ></input>
                         </div>
                     </div>
-                    <button className="btn btn-primary">Post</button>
+                    <button type="submit" onClick={handleSubmit} className="btn btn-primary">Post</button>
                 </div>
             </form>
 

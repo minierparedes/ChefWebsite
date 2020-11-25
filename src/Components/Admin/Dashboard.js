@@ -4,7 +4,7 @@ import AdminRecipeList from './AdminRecipeList'
 
 function Dashboard() {
     return (
-        <div className="">
+        <div >
             <AddRecipe />
             <AdminRecipeList />
 

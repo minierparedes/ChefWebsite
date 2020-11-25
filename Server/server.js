@@ -20,19 +20,19 @@ app.use(fileUpload());
 //GET all recipes
 app.get("/api/v1/recipes", async (req, res) => {
     try {
-        
-        const results = await db.query("SELECT * FROM recipes");
-        
 
-        
+        const results = await db.query("SELECT * FROM recipes");
+
+
+
         res.status(200).json({
-                    status: "success",
-                    results: results.rowCount,
-                    data: {
-                        recipes: results.rows
-                    }
-                });
-               
+            status: "success",
+            results: results.rowCount,
+            data: {
+                recipes: results.rows
+            }
+        });
+
     } catch (error) {
         console.log(error);
     }
@@ -100,13 +100,18 @@ app.get("/api/v1/recipes/:id", async (req, res) => {
 //CREATE recipe
 app.post("/api/v1/recipes", async (req, res) => {
     const { name, data } = req.files.file;
+    
+    //console.log(req.body);
+    console.log(res);
+
     try {
-        const results = await db.query("INSERT INTO recipes (title, ingredients, directions, video_url, img_name, img) VALUES ($1, $2, $3, $4, $5, $6) returning *", [req.body.title, req.body.ingredients, req.body.directions, req.body.video_url, name, data]);
+        const results = await db.query("INSERT INTO recipes (title, ingredients, directions, img_name, img) VALUES ($1, $2, $3, $4, $5) returning *", [req.body.title, req.body.ingredients, req.body.directions, name, data]);
         res.status(201).json({
             status: "success",
             data: {
                 recipe: results.rows[0]
-            }
+            },
+
         });
     } catch (error) {
         console.log(error);
