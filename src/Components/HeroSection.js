@@ -3,11 +3,12 @@ import "../App"
 import { Button } from './Button'
 import "./HeroSection.css";
 
-const HeroSection = () => {
+const HeroSection = (props) => {
     return (
         <div className="hero-container">
-            <h1>Cook and enjoy</h1>
-            <p>simple recipes to follow</p>
+            <img src={props.src} ></img>
+            <h1>{props.title}</h1>
+            <p>{props.headline}</p>
         </div>
     )
 }

@@ -1,6 +1,11 @@
 import React from 'react';
 import "../../App.css";
+import Dashboard from '../Admin/Dashboard';
 
 export default function Services() {
-    return <h1 className="services">SERVICES</h1>;
+    return (
+        <>
+        <Dashboard />
+        </>
+    )
 }

@@ -15,9 +15,8 @@ function RecipeCardList() {
         const fetchData = async () => {
             try {
                 const response = await RecipesAPI.get("/");
-                for(let i = 0; i < response.data.data.recipes.length; i++) {
-                    console.log(response.data.data.recipes[i]);
-                }
+                // for(let i = 0; i < response.data.data.recipes.length; i++) {
+                // }
                 setRecipes(response.data.data.recipes);
                 //setRecipes(response.data.data.recipes.splice(0, 6));
             } catch (error) {

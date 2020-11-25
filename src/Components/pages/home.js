@@ -7,9 +7,9 @@ import RecipeCardList from "../RecipeCardList";
 function Home() {
     return (
         <>
-        <HeroSection />
-        <RecipeCardList />
-        <Footer />
+            <HeroSection src={"/img/img-home.jpg"}  title={"Cook & enjoy"} headline={"simple recipes to follow"} />
+            <RecipeCardList />
+            <Footer />
         </>
     )
 }

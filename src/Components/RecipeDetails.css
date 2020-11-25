@@ -13,22 +13,22 @@
 }
 
 .hero-section {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 1rem;
     grid-area: hero-section;
-    color: white;
-    font-size: 120px;
+    
+    
 }
 
 main {
-    background: #bedbbb;
     grid-area: main;
+    background: #bedbbb;
+    position: sticky;
+    
+    
 }
 
 .sidebar {
-    background: #c05555;
     grid-area: sidebar;
+    background: #c05555;
 }
 
 .content-1 {
