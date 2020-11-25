@@ -5,9 +5,8 @@ import Dashboard from '../Admin/Dashboard';
 
 export default function Services() {
     return (
-        <div className="form-container">
+        <div className="container">
         <Dashboard />
-        <AdminRecipeList />
         </div>
     )
 }

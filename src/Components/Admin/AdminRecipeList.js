@@ -31,8 +31,9 @@ function AdminRecipeList(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {recipes.map(recipe => {
-                        return (<tr>
+                    {recipes && recipes.map(recipe => {
+                        return (
+                        <tr key={recipe.recipe_id}>
                             <th scope="row">{recipe.recipe_id}</th>
                             <td>{recipe.title}</td>
                             <td>{recipe.recipe_date.slice(0, 10)}</td>
