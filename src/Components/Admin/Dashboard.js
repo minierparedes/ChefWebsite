@@ -2,7 +2,7 @@ import React from 'react'
 
 function Dashboard() {
     return (
-        <div className="form-container">
+        <div className="">
             <form action="">
                 <div className="form-row">
                     <div className="form-column">
