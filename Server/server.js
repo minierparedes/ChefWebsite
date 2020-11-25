@@ -112,16 +112,16 @@ app.post("/api/v1/recipes", async (req, res) => {
 // });
 
 //DELETE recipe
-// app.delete("/api/v1/recipes/:id", async (req, res) => {
-//     try {
-//         const results = await db.query("DELETE FROM recipes WHERE recipe_id = $1", [req.params.id]);
-//         res.status(204).json({
-//             status: "success"
-//         });
-//     } catch (error) {
-//         console.log(error);
-//     }
-// });
+app.delete("/api/v1/recipes/:id", async (req, res) => {
+    try {
+        const results = await db.query("DELETE FROM recipes WHERE recipe_id = $1", [req.params.id]);
+        res.status(204).json({
+            status: "success"
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 
 

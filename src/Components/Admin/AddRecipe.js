@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import RecipesAPI from '../../API/RecipesAPI';
+import { RecipesContext } from '../../Context/RecipesContext';
 
 
 function AddRecipe() {
+    const { addRecipes } = useContext(RecipesContext);
     const [title, setTitle] = useState("");
     const [comment, setComment] = useState("");
     const [ingredients, setIngredients] = useState("");
@@ -25,13 +27,14 @@ function AddRecipe() {
             formData.append("title", title);
             formData.append("ingredients", ingredients);
             formData.append("directions", directions);
-            console.log(formData);
 
             const response = await RecipesAPI.post("/", formData, {
-                headers: {'content-type': 'multipart/form-data',},
-                
+                headers: {
+                    'content-type': 'multipart/form-data',
+                },
             });
-            console.log(response);
+            addRecipes(response.data.data.recipe)
+
         } catch (error) {
             console.log(error);
         }
