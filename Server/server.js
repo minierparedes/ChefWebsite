@@ -2,11 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const db = require("../Server/db")
-const morgan = require("morgan");
-const multer = require("multer");
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
-const FileType = require('file-type');
+
 
 
 
@@ -38,27 +36,7 @@ app.get("/api/v1/recipes", async (req, res) => {
     }
 });
 
-//GET all images
 
-// app.get("/api/v1/recipes", async (req, res) => {
-
-//     try {
-//         const results = await db.query("SELECT * FROM images");
-//         if(results) {
-//             const contentType = await FileType.fromBuffer(results.rows.img);
-//             res.type(contentType.mime);
-//             res.end(results.rows[0].img);
-//             res.status(200).json({
-//                 status: "success",
-//                 data: results
-//             });
-//         }else res.end("no image available");
-//         } catch (error) {
-//             console.log(error);
-//         }
-// });
-
-//GET recipe
 app.get("/api/v1/recipes/:id", async (req, res) => {
 
     try {
@@ -76,35 +54,31 @@ app.get("/api/v1/recipes/:id", async (req, res) => {
 
 });
 
-//GET recipe image
+// //GET recipe image
 
-app.get("/api/v1/recipes/:id", async (req, res) => {
+// app.get("/api/v1/recipes/:id", async (req, res) => {
 
-    try {
-        const img = await db.query("SELECT * FROM images WHERE img_id= $1", [req.params.id]);
-        if (img) {
-            const contentType = await FileType.fromBuffer(img.rows[0].img); // get the mimetype of the buffer (in this case its gonna be jpg but can be png or w/e)
-            res.type(contentType.mime); // not always needed most modern browsers including chrome will understand it is an img without this
-            res.end(img.rows[0].img);
-        } else {
-            res.end('No Img with that Id!');
-        }
-    } catch (error) {
-        console.log(error);
-    }
+//     try {
+//         const img = await db.query("SELECT * FROM images WHERE img_id= $1", [req.params.id]);
+//         if (img) {
+//             const contentType = await FileType.fromBuffer(img.rows[0].img); // get the mimetype of the buffer (in this case its gonna be jpg but can be png or w/e)
+//             res.type(contentType.mime); // not always needed most modern browsers including chrome will understand it is an img without this
+//             res.end(img.rows[0].img);
+//         } else {
+//             res.end('No Img with that Id!');
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
 
 
-});
+// });
 
 
 //CREATE recipe
 app.post("/api/v1/recipes", async (req, res) => {
     const { name, data } = req.files.file;
-    
-    //console.log(req.body);
-    console.log(res);
-
-    try {
+        try {
         const results = await db.query("INSERT INTO recipes (title, ingredients, directions, img_name, img) VALUES ($1, $2, $3, $4, $5) returning *", [req.body.title, req.body.ingredients, req.body.directions, name, data]);
         res.status(201).json({
             status: "success",
@@ -120,22 +94,6 @@ app.post("/api/v1/recipes", async (req, res) => {
 
 });
 
-// app.post("/api/v1/recipes", async (req, res) => {
-//     const { name, data } = req.files.file;
-//     try {
-//         const results = await db.query("INSERT INTO recipes (img_name, img) VALUES ($1, $2) returning *", [name, data]);
-//         res.status(200).json({
-//             status: "success",
-//             data: {
-//                 image: results
-//             }
-//         });
-//     } catch (error) {
-//         console.log(error);
-//     }
-
-
-// });
 
 //UPDATE recipe
 // app.put("/api/v1/recipes/:id", async (req, res) => {
