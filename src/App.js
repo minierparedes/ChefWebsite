@@ -6,7 +6,6 @@ import Home from "./Components/pages/Home";
 import Products from './Components/pages/Products';
 import Services from './Components/pages/Services';
 import SignUp from './Components/pages/SignUp';
-import Footer from './Components/Footer';
 import Recipes from './Components/pages/Recipes';
 import RecipeDetails from './Components/pages/RecipeDetails';
 import { RecipesContextProvider } from './Context/RecipesContext';
@@ -18,7 +17,7 @@ function App() {
     <Router>
     <Navbar />
     <Switch>
-    <Route exact path="/" exact component={Home}/>
+    <Route exact path="/" component={Home}/>
     <Route exact path="/recipes" component={Recipes}/>
     <Route exact path="/recipes/:id" component={RecipeDetails}/>
     <Route exact path="/services" component={Services}/>

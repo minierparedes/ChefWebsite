@@ -7,7 +7,7 @@ function Dashboard() {
         <div >
             <AddRecipe />
             <AdminRecipeList />
-
+        
         </div>
     )
 }

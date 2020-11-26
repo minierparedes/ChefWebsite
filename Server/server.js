@@ -36,7 +36,7 @@ app.get("/api/v1/recipes", async (req, res) => {
     }
 });
 
-
+//GET recipe by id
 app.get("/api/v1/recipes/:id", async (req, res) => {
 
     try {

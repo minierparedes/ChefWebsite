@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import "../Components/RecipeCard.css";
 
 function RecipeCard(props) {
@@ -7,7 +6,7 @@ function RecipeCard(props) {
     return (
         <div className="card-container">
             <div className="img-container">
-                <img className="card-img" src={props.src} alt="recipe image"></img>
+                <img className="card-img" src={props.src} alt="recipes"></img>
             </div>
             <div className="card-content">
                 <div className="card-title"><h3>{props.title}</h3></div>

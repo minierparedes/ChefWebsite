@@ -1,9 +1,12 @@
 import React, { useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import RecipesAPI from "../../API/RecipesAPI";
 import { RecipesContext } from '../../Context/RecipesContext';
 
 function AdminRecipeList(props) {
     const { recipes, setRecipes } = useContext(RecipesContext);
+    let history = useHistory();
+
     useEffect(() => {
 
         const fetchData = async () => {
@@ -28,6 +31,10 @@ function AdminRecipeList(props) {
         }
     }
 
+    const handleUpdate = (id) => {
+        history.push(`/recipes/${id}/update`);
+    }
+
     return (
         <div>
             <table class="table table-hover" >
@@ -46,8 +53,8 @@ function AdminRecipeList(props) {
                             <tr key={recipe.recipe_id}>
                                 <th scope="row">{recipe.recipe_id}</th>
                                 <td>{recipe.title}</td>
-                                <td>{recipe.recipe_date}</td>
-                                <td><button className="btn btn-warning">Update</button></td>
+                                <td>{recipe.recipe_date.slice(0, 10)}</td>
+                                <td><button onClick={() => handleUpdate(recipe.recipe_id)} className="btn btn-warning">Update</button></td>
                                 <td><button onClick={() => handleDelete(recipe.recipe_id)} className="btn btn-danger">Delete</button></td>
                             </tr>)
                     })}
