@@ -4,8 +4,8 @@ const RecipesAPI = axios.create({
     baseURL: "http://localhost:4555/api/v1/recipes"
 });
 
-const adminAPI = axios.create({
-    baseURL: "http://localhost:4555/api/v1/recipes"
+const AdminAPI = axios.create({
+    baseURL: "http://localhost:4555/api/v1/routes/auth/"
 });
 
-export default { RecipesAPI, adminAPI };
+export default { RecipesAPI, AdminAPI };

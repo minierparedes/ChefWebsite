@@ -1,14 +1,21 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import AdminRecipeList from './AdminRecipeList';
 
 function Register() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-    
+
     const handleSubmit = async e => {
         e.preventDefault();
 
         try {
-            const response = await 
+            const body = { name, password };
+            const response = await AdminRecipeList.post("/", {
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body),
+            });
+            const parseResponse = await response.json();
+            console.log(parseResponse);
         } catch (error) {
             console.error(error.message);
         }

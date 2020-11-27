@@ -128,7 +128,7 @@ app.delete("/api/v1/recipes/:id", async (req, res) => {
         });
     } catch (error) {
         console.error(error.message);
-        res.status(500).send("Server error")
+        res.status(500).send("Server error");
     }
 });
 
@@ -138,7 +138,15 @@ app.delete("/api/v1/recipes/:id", async (req, res) => {
 
 //registering
 
-app.post("/api/v1/admin")
+app.post("/api/v1/routes/auth/register", async (req, res) => {
+    try {
+        const { name, password } = req.body;
+        const results = await db.query("SELECT * FROM recipes WHERE recipe_id= $1", [name ]
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Server error");
+    }
+});
 
 
 
