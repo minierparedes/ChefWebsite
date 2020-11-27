@@ -1,15 +1,11 @@
-import React from 'react'
-import AddRecipe from './AddRecipe'
-import AdminRecipeList from './AdminRecipeList'
+import React from 'react';
 
-function Dashboard() {
+function Dashboard({setAuth}) {
     return (
-        <div >
-            <AddRecipe />
-            <AdminRecipeList />
-        
-        </div>
+        <>
+        <h1>Dashboard</h1>
+        </>
     )
-}
+};
 
-export default Dashboard
+export default Dashboard;

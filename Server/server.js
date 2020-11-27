@@ -4,16 +4,19 @@ const cors = require("cors");
 const db = require("../Server/db")
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
-
-
-
-
 const app = express();
 
+
+
+//MIDDLEWARE
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.use(cors());
 app.use(fileUpload());
+
+
+
+//ROUTES
 
 //GET all recipes
 app.get("/api/v1/recipes", async (req, res) => {
@@ -32,7 +35,8 @@ app.get("/api/v1/recipes", async (req, res) => {
         });
 
     } catch (error) {
-        console.log(error);
+        console.error(error.message);
+        res.status(500).send("Server error")
     }
 });
 
@@ -48,7 +52,8 @@ app.get("/api/v1/recipes/:id", async (req, res) => {
             }
         });
     } catch (error) {
-        console.log(error);
+        console.error(error.message);
+        res.status(500).send("Server error")
     }
 
 
@@ -68,7 +73,8 @@ app.get("/api/v1/recipes/:id", async (req, res) => {
 //             res.end('No Img with that Id!');
 //         }
 //     } catch (error) {
-//         console.log(error);
+//         consolore.error(err.message);
+//     res.status(500).send("Server error")
 //     }
 
 
@@ -78,7 +84,7 @@ app.get("/api/v1/recipes/:id", async (req, res) => {
 //CREATE recipe
 app.post("/api/v1/recipes", async (req, res) => {
     const { name, data } = req.files.file;
-        try {
+    try {
         const results = await db.query("INSERT INTO recipes (title, ingredients, directions, img_name, img) VALUES ($1, $2, $3, $4, $5) returning *", [req.body.title, req.body.ingredients, req.body.directions, name, data]);
         res.status(201).json({
             status: "success",
@@ -88,7 +94,8 @@ app.post("/api/v1/recipes", async (req, res) => {
 
         });
     } catch (error) {
-        console.log(error);
+        console.error(error.message);
+        res.status(500).send("Server error")
     }
 
 
@@ -107,7 +114,8 @@ app.post("/api/v1/recipes", async (req, res) => {
 //             }
 //         });
 //     } catch (error) {
-//         console.log(error);
+//         consolore.error(err.message);
+//res.status(500).send("Server error")
 //     }
 // });
 
@@ -119,9 +127,18 @@ app.delete("/api/v1/recipes/:id", async (req, res) => {
             status: "success"
         });
     } catch (error) {
-        console.log(error);
+        console.error(error.message);
+        res.status(500).send("Server error")
     }
 });
+
+
+
+//REGISTER AND LOGGIN ROUTES
+
+//registering
+
+app.post("/api/v1/admin")
 
 
 
