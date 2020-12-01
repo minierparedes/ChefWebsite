@@ -23,13 +23,13 @@ function Footer() {
             <div className="footer-links">
                 <div className="footer-links-wrapper">
                     <div className="footer-links-items">
-                        <h2>About Damian Goodwin</h2>
+                        <h2>About Chef Awesome</h2>
                         <Link to="/services">What I am up to</Link>
                         <Link to="/services">Testimonials</Link>
                         <Link to="/services">Terms of services</Link>
                     </div>
                     <div className="footer-links-items">
-                        <h2>Contact Damian Goodwin</h2>
+                        <h2>Contact Chef Awesome</h2>
                         <Link to="/services">Contact</Link>
                         <Link to="/services">Support</Link>
                         <Link to="/services">Events</Link>
@@ -50,7 +50,7 @@ function Footer() {
                     <div className="footer-logo">
                         <Link className="social-logo" to="/">@<i /></Link>
                     </div>
-                    <small className="website-rights">&copy;  - {new Date().getFullYear()} Damian Goodwin</small>
+                    <small className="website-rights">&copy;  - {new Date().getFullYear()} Chef Awesome</small>
                     <div className="social-icons">
                         <Link className="social-icons-link-facebook" to="/" target="_blank" aria-label="Facebook">
                             <i className="fab fa-facebook-f" />
