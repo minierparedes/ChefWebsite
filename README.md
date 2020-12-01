@@ -1,14 +1,41 @@
-# Name
-Chef Awesome
+# Chef Awesome
 
-# Description
+<p float="left">
+<img src="https://img.shields.io/badge/deployment-pending-yellow">
+<img src="https://img.shields.io/github/commits-since/minierparedes/chefwebsite/v1.0/master?logo=github">
+<img src="https://wakatime.com/badge/github/minierparedes/ChefWebsite.svg">
+</p>
+
+<br>
+
+## Description
 A website dedicated to the best recipes and exclusive content to registered users.<br />
-Users can schedule private events on the site calendar, be a part of the mailing list and many more features.
+Users can schedule private events on the site calendar, be a part of the mailing list and many more features. Find and share everyday cooking recipes with chef awesome. Discover simple recipes for anyone to follow. 
+
+* **Recipes** Provide instructions and ingredient list to be followed.
+* **Services** Private events, personal cooking classes, and cooking meetups are scheduled through onsite calander.
+  
+* **Products** List of items and tools that are used for the recipes that anyone can get.
+* **Mailing list** Users can register and recieve the latest recipes and tips.
+* **Responsive design** The design and development of the web app response to the user's platform, screen size, and device orientation.
+
+<br>
 
 
 <img width="1212" alt="Screen Shot 2020-10-25 at 0 03 21" src="https://user-images.githubusercontent.com/65219445/97085019-b3d45380-1655-11eb-9955-b50a19fa1497.png">
 
 <img width="1135" alt="Screen Shot 2020-10-25 at 0 03 40" src="https://user-images.githubusercontent.com/65219445/97085050-e1210180-1655-11eb-9d16-7d9cca26c1b4.png">
+
+<br>
+<br>
+
+## Web site/ deployment
+<p float="left">
+<img src="https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white"/>
+<img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white"/>
+</p>
+
+The website will be deployed and hosted in Heroku. Heroku Postgres is a managed SQL database service provided directly by Heroku. 
 
 ## Available Scripts
 
@@ -42,5 +69,4 @@ This is a full stack website using the following tech stack: <br />
 `PostgreSQL` database <br />
 The project is still going on and is being updated constantly.
 
-# Coding Stats
-[![time tracker](https://wakatime.com/badge/github/minierparedes/ChefWebsite.svg)](https://wakatime.com/badge/github/minierparedes/ChefWebsite)
+
