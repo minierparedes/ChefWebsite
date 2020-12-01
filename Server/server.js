@@ -4,6 +4,7 @@ const cors = require("cors");
 const db = require("../Server/db")
 const fileUpload = require("express-fileupload");
 const bodyParser = require("body-parser");
+const { response } = require("express");
 const app = express();
 
 
@@ -141,7 +142,10 @@ app.delete("/api/v1/recipes/:id", async (req, res) => {
 app.post("/api/v1/routes/auth/register", async (req, res) => {
     try {
         const { name, password } = req.body;
-        const results = await db.query("SELECT * FROM recipes WHERE recipe_id= $1", [name ]
+        console.log(name);
+        const results = await db.query("SELECT * FROM recipes WHERE user_name = $1", [name]);
+        res.json(results.rows)
+        console.log(results.rows);
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Server error");

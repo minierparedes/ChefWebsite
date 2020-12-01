@@ -41,3 +41,6 @@ This is a full stack website using the following tech stack: <br />
 `Node.js` and `Express.js` server side <br />
 `PostgreSQL` database <br />
 The project is still going on and is being updated constantly.
+
+# Coding Stats
+[![time tracker](https://wakatime.com/badge/github/minierparedes/ChefWebsite.svg)](https://wakatime.com/badge/github/minierparedes/ChefWebsite)
